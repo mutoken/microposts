@@ -1,0 +1,26 @@
+
+[1mFrom:[0m /usr/local/rvm/gems/ruby-2.3.0/gems/rack-1.6.4/lib/rack/etag.rb @ line 27 Rack::ETag#call:
+
+    [1;34m23[0m: [32mdef[0m [1;34mcall[0m(env)
+    [1;34m24[0m:   status, headers, body = @app.call(env)
+    [1;34m25[0m: 
+    [1;34m26[0m:   [32mif[0m etag_status?(status) && etag_body?(body) && !skip_caching?(headers)
+ => [1;34m27[0m:     original_body = body
+    [1;34m28[0m:     digest, new_body = digest_body(body)
+    [1;34m29[0m:     body = [1;34;4mRack[0m::[1;34;4mBodyProxy[0m.new(new_body) [32mdo[0m
+    [1;34m30[0m:       original_body.close [32mif[0m original_body.respond_to?([33m:close[0m)
+    [1;34m31[0m:     [32mend[0m
+    [1;34m32[0m:     headers[[1;34;4mETAG_STRING[0m] = [31m[1;31m%([0m[31mW/"#{digest}[0m[31m"[1;31m)[0m[31m[0m [32mif[0m digest
+    [1;34m33[0m:   [32mend[0m
+    [1;34m34[0m: 
+    [1;34m35[0m:   [32munless[0m headers[[1;34;4mCACHE_CONTROL[0m]
+    [1;34m36[0m:     [32mif[0m digest
+    [1;34m37[0m:       headers[[1;34;4mCACHE_CONTROL[0m] = @cache_control [32mif[0m @cache_control
+    [1;34m38[0m:     [32melse[0m
+    [1;34m39[0m:       headers[[1;34;4mCACHE_CONTROL[0m] = @no_cache_control [32mif[0m @no_cache_control
+    [1;34m40[0m:     [32mend[0m
+    [1;34m41[0m:   [32mend[0m
+    [1;34m42[0m: 
+    [1;34m43[0m:   [status, headers, body]
+    [1;34m44[0m: [32mend[0m
+
