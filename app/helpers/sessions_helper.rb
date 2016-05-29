@@ -5,7 +5,6 @@ module SessionsHelper
   
   def logged_in?
     !!current_user
-    #binding.pry
   end
   
   def store_location
