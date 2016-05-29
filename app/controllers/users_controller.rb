@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :check_user, only: [:edit, :update]
 
   def show
+    @user = User.find(params[:id])
+    @microposts = @user.microposts.order(created_at: :desc)
   end
 
   def new
@@ -48,7 +50,6 @@ class UsersController < ApplicationController
     # @user ←　編集しようとしているユーザー
     # current_user ←自分
     redirect_to root_url if @user != current_user
-    binding.pry
   end
     
 
