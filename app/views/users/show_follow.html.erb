@@ -1,0 +1,38 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <div class="container-fluid">
+        <%= gravatar_for @user, size: 80 %>
+      </div>
+      <h1><%= @user.name %></h1>
+      <h2><%= @user.company %></h2>
+      <h2><%= @user.location %></h2>
+      </br>
+      <%= link_to "Followings", followings_path, class: "btn btn-primary" %>
+      <%= link_to "Followers", followers_path, class: "btn btn-primary" %>
+      </br>
+      </br>
+      <p><%= @user.profile %><p>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <div class="float">
+    <h3><%= @title %></h3>
+    <% if @follows.any? %>
+      <% @follows.each do |user| %>
+        <div class="follows">
+          <div class="gravatar">
+            <%= gravatar_for user, size:50 %>
+          </div>
+          <div class="user">
+            <%= link_to user.name, user %>
+          </div>
+          <div class="profile">
+            <%= user.profile %>
+          </div>
+        </div>
+      <% end %>
+    <% end %> 
+    </div>
+  </div>
+</div>

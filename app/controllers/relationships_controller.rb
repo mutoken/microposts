@@ -11,9 +11,4 @@ class RelationshipsController < ApplicationController
     current_user.unfollow(@user)
   end
 
-  def show
-    binding.pry
-  end
-
-
 end
